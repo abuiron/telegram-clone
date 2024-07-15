@@ -4,6 +4,7 @@ This is a simple clone of the Telegram messaging app, built with React and Mater
 
 ## Table of Contents
 
+- [Live Demo](#live-demo)
 - [Features](#features)
 - [Installation](#installation)
 - [Usage](#usage)
@@ -11,6 +12,9 @@ This is a simple clone of the Telegram messaging app, built with React and Mater
 - [Contributing](#contributing)
 - [License](#license)
 
+
+## Live Demo
+   - [Click to see](https://telegramclonebyabu.netlify.app/)
 ## Features
 
 - View a list of chats
