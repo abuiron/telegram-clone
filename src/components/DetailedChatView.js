@@ -1,9 +1,8 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Box, Typography, IconButton, TextField, Button, MenuItem, Select } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { getChatMessages, getChats } from '../api';
-import { ThemeContext } from '../ThemeContext';
 
 const DetailedChatView = () => {
   const { chatId } = useParams();
@@ -11,18 +10,28 @@ const DetailedChatView = () => {
   const [messages, setMessages] = useState([]);
   const [chat, setChat] = useState(null);
   const [newMessage, setNewMessage] = useState('');
-  const [messageColor, setMessageColor] = useState('#25D366');
+  const [messageColor, setMessageColor] = useState('#00ff00');
 
   useEffect(() => {
     const fetchMessages = async () => {
-      const data = await getChatMessages(chatId);
-      setMessages(data);
+      try {
+        const data = await getChatMessages(chatId);
+        setMessages(data);
+      } catch (error) {
+        console.error('Failed to fetch chat messages:', error);
+      }
     };
+
     const fetchChatDetails = async () => {
-      const allChats = await getChats();
-      const selectedChat = allChats.find(chat => chat.id === parseInt(chatId));
-      setChat(selectedChat);
+      try {
+        const allChats = await getChats();
+        const selectedChat = allChats.find(chat => chat.id === parseInt(chatId));
+        setChat(selectedChat);
+      } catch (error) {
+        console.error('Failed to fetch chat details:', error);
+      }
     };
+
     fetchMessages();
     fetchChatDetails();
   }, [chatId]);
@@ -80,7 +89,7 @@ const DetailedChatView = () => {
           onChange={(e) => setMessageColor(e.target.value)}
           sx={{ marginLeft: 1 }}
         >
-          <MenuItem value="	#25D366">Lightgreen</MenuItem>
+          <MenuItem value="#25D366">Lightgreen</MenuItem>
           <MenuItem value="#000000">Black</MenuItem>
           <MenuItem value="#ff0000">Red</MenuItem>
           <MenuItem value="#00ff00">Green</MenuItem>

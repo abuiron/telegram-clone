@@ -9,7 +9,7 @@ const ChatItem = ({ chat }) => {
     navigate(`/chat/${chat.id}`);
   };
 
-  const displayName = chat.creator.name && chat.creator.name.trim() !== null ? chat.creator.name : chat.creator.phone;
+  const displayName = chat.creator.name && chat.creator.name.trim() !== 'null' ? chat.creator.name : chat.creator.phone;
 
   return (
     <ListItem button onClick={handleChatSelect}>

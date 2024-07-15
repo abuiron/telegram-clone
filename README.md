@@ -22,11 +22,11 @@ This is a simple clone of the Telegram messaging app, built with React and Mater
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/yourusername/telegram-clone.git
+git clone https://github.com/yourusername/telegram-clone.git
 
 2. Navigate to the project directory:
 
-  ```bash
+     ```bash
     cd telegram-clone
 
 3. Install the dependencies:

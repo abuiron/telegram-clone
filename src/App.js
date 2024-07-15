@@ -14,9 +14,13 @@ const App = () => {
 
   useEffect(() => {
     const fetchChats = async () => {
-      const data = await getChats();
-      setChats(data);
-      setFilteredChats(data);
+      try {
+        const data = await getChats();
+        setChats(data);
+        setFilteredChats(data);
+      } catch (error) {
+        console.error('Failed to fetch chats:', error);
+      }
     };
     fetchChats();
 
